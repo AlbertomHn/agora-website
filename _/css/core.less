@@ -1,0 +1,234 @@
+/* less css (http://lesscss.org/) , update (in my case) with /var/lib/gems/1.8/bin/lessc core.less */
+.background-linear-gradient(@i: #fff, @j: #000) {
+    background: -webkit-gradient(linear, 0 0, 0 bottom, color-stop(0, @i), color-stop(1, @j));
+    background: -moz-linear-gradient(@i, @j);
+    background: -o-linear-gradient(@i, @j);
+    background: linear-gradient(@i, @j);
+}
+
+.background-linear-gradient-overlay(@i: #fff, @j: #000, @overlay: none) {
+    background: @overlay, -webkit-gradient(linear, 0 0, 0 bottom, color-stop(0, @i), color-stop(1, @j));
+    background: @overlay, -moz-linear-gradient(@i, @j);
+    background: @overlay, -o-linear-gradient(@i, @j);
+    background: @overlay, linear-gradient(@i, @j);
+}
+
+.border-radius(@radii:10px) {
+  -webkit-border-radius: @radii;
+  border-radius: @radii;
+  -moz-border-radius: @radii;
+}
+
+.box-shadow(@shadow: 0) {
+    -moz-box-shadow: @shadow;
+    -webkit-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+body  {
+    font-size: 10pt;
+    font-family: arial;
+
+    header[role="banner"] {
+        .background-linear-gradient-overlay(#fefefe, #ececec, url(../img/people-bg.png));
+
+        height: 125px;
+        border-bottom: #dddddd 1px solid;
+        display: block;
+        padding: 0 5%;
+        
+        nav.userbox {
+            .border-radius(0 0 5px 5px);
+            .box-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+            .background-linear-gradient(#fcfcfc, #ececec);
+            border: solid 1px;
+            border-color: #E9E9E9 #E9E9E9 #F5F5F5;
+            border-top: medium none;
+            float: right;
+            font-size: 110%;
+            padding: 8px 10px 7px 10px;
+            
+            ul {
+                li a {
+                    text-decoration: none;
+                    color: black;
+                    margin: 0 0em;
+                }
+                li:after {
+                    width: 1px;
+                    display: inline-block;
+                    background-color: #ddd;
+                    content: "|";
+                    margin-right: 0.25em;
+                    color: transparent;
+                }
+                li:first-child a {
+                    padding-left: 0;
+                    margin-left: 0;
+                    border-left: none;
+                }
+                li:last-child:after {
+                    content: "";
+                }
+            }
+        }
+        > a {
+            height: 55px;
+            display: inline-block;
+            margin: 35px 0;
+            
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    nav[role="navigation"] {
+        margin: 35px 5% 0 5%;
+        .background-linear-gradient(#ededed, #ddd);
+        border: #dddddd solid 1px;
+        border-bottom-color: #fafafa;
+        .border-radius(5px 5px 0 0);
+        font-size: 110%;
+        display: block;
+        padding: 5px;
+        
+        ul li {
+            a {
+                .border-radius(4px);
+                color: #666666;
+                font-size: 14px;
+                height: 26px;
+                line-height: 26px;
+                padding: 0 8px;
+                text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.698);
+                text-decoration: none;
+                display: inline-block;
+            }
+            a:hover {
+                color: #333;
+                background-color: #ccc;
+            }
+        }
+
+    }
+    > nav.subnav {
+        margin: 0 5%;
+        border: #dddddd solid 1px;
+        border-top-style: none;
+        .border-radius(0 0 5px 5px);
+        .background-linear-gradient(#fafafa, #e6e6e6);
+        padding: 5px;    
+    }
+    > div#content {
+        background-color: white;
+        padding: 5% 1em 0 1em;
+        overflow: hidden;
+        margin: 0 5% 0 5%;
+        
+        > section {
+            width: 50%;
+            float: left;
+            margin: 0 0 5% 0;
+            
+            p {
+                margin-bottom: 0.4em;
+            }
+            > header {
+                color: #108db6;
+                font-size: 130%;
+                margin-bottom: 1em;
+                padding-left: 0.1em;
+            }
+            > article {
+                margin-bottom: 2em;
+                padding-right: 1em;
+                overflow: hidden;
+                > header h1 {
+                    font-weight: normal;
+                    font-size: 125%;
+                    margin-right: 0.5em;
+                }
+            }
+            > article.movement {
+                > header {
+                    margin-bottom: 0.6em;
+                    float: left;
+                    
+                    > hgroup {
+                        > h1.type {
+                            font-weight: bold;
+                            letter-spacing: 0.05em;
+                        }
+                        > h1 {
+                            display: inline;
+                        }
+                    }
+                }
+                .votes {
+                    display: inline-block;
+                    background-color: #3b96c6;
+                    font-weight: bold;
+                    color: white;
+                    padding: 0.3em;
+                    float: right;
+                }
+            }
+            > article.debate {
+                > header {
+                    float: left;
+                    padding-bottom: 0.01em;
+                }
+                > .status {
+                    float: right;
+                    font-size: 95%;
+                    text-align: right;
+                    
+                    * {
+                        font-size: inherit;
+                    }
+                    > div:first-child {
+                        font-weight: bold;
+                    }
+                    
+                    > .active {
+                        color: green;
+                    }
+                    > .pause {
+                        color: orange;
+                    }
+                    > .closed {
+                        color: red;
+                    }
+                }
+                > .type {
+                    float: left;
+                    clear: left;
+                    font-weight: bold;
+                }
+                > .type + span:not(.type) {
+                    float: left;
+                    padding-left: 0.5em;
+                }
+            }
+        }
+    }
+    
+    > footer {
+        margin: 0 5% 0.5em 5%;
+        background-color: #eee;
+        padding: 0.5em;
+        .border-radius(0 0 5px 5px);
+    }
+}
+
+.clear {
+    clear: both;
+}
+
+
+nav ul li {
+    display: inline;
+    margin: 0;
+}
+
