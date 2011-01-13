@@ -63,9 +63,9 @@ body nav[role="navigation"] {
   background: linear-gradient(#ededed, #dddddd);
   border: #dddddd solid 1px;
   border-bottom-color: #fafafa;
-  -webkit-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
   font-size: 110%;
   display: block;
   padding: 5px;
@@ -87,6 +87,16 @@ body nav[role="navigation"] ul li a:hover {
   color: #333333;
   background-color: #cccccc;
 }
+body nav[role="navigation"] ul li a.selected {
+  background: none repeat scroll 0 0 #ffffff;
+  border-color: #cccccc #eeeeee #eeeeee #cccccc;
+  border-style: solid;
+  border-width: 1px;
+  color: #333333;
+  font-weight: bold;
+  position: relative;
+  top: -1px;
+}
 body > nav.subnav {
   margin: 0 5%;
   border: #dddddd solid 1px;
@@ -104,15 +114,21 @@ body > div#content {
   background-color: white;
   padding: 5% 1em 0 1em;
   overflow: hidden;
-  margin: 0 5% 0 5%;
+  margin: 0 5%;
 }
-body > div#content > section {
+body > div#content > section.fifty_col {
   width: 50%;
   float: left;
-  margin: 0 0 5% 0;
 }
+body > div#content > section { margin-bottom: 25px; }
 body > div#content > section p { margin-bottom: 0.4em; }
-body > div#content > section > header {
+body > div#content > section ul {
+  list-style-type: disc;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+body > div#content > section ul li { margin-bottom: 1em; }
+body > div#content > section header {
   color: #108db6;
   font-size: 130%;
   margin-bottom: 1em;
@@ -123,20 +139,27 @@ body > div#content > section > article {
   padding-right: 1em;
   overflow: hidden;
 }
-body > div#content > section > article > header h1 {
-  font-weight: normal;
-  font-size: 125%;
-  margin-right: 0.5em;
-}
 body > div#content > section > article.movement > header {
   margin-bottom: 0.6em;
   float: left;
+  color: black;
+  font-size: 125%;
+  padding-left: 0;
 }
 body > div#content > section > article.movement > header > hgroup > h1.type {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
-body > div#content > section > article.movement > header > hgroup > h1 { display: inline; }
+body > div#content > section > article.movement > header > hgroup h1 {
+  display: inline;
+  font-weight: normal;
+  margin-right: 0.5em;
+}
+body > div#content > section > article.movement > header > hgroup > a {
+  display: inline;
+  text-decoration: none;
+  color: inherit;
+}
 body > div#content > section > article.movement .votes {
   display: inline-block;
   background-color: #3b96c6;
@@ -148,6 +171,18 @@ body > div#content > section > article.movement .votes {
 body > div#content > section > article.debate > header {
   float: left;
   padding-bottom: 0.01em;
+  color: inherit;
+  font-size: 125%;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+body > div#content > section > article.debate > header a {
+  color: inherit;
+  text-decoration: none;
+}
+body > div#content > section > article.debate > header h1 {
+  font-weight: normal;
+  margin-right: 0.5em;
 }
 body > div#content > section > article.debate > .status {
   float: right;
@@ -167,14 +202,6 @@ body > div#content > section > article.debate > .type {
 body > div#content > section > article.debate > .type + span:not(.type) {
   float: left;
   padding-left: 0.5em;
-}
-body > footer {
-  margin: 0 5% 0.5em 5%;
-  background-color: #eeeeee;
-  padding: 0.5em;
-  -webkit-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
 }
 .clear { clear: both; }
 nav ul li {

@@ -25,6 +25,8 @@
     box-shadow: @shadow;
 }
 
+@left-right-margin: 5%;
+
 body  {
     font-size: 10pt;
     font-family: arial;
@@ -35,7 +37,7 @@ body  {
         height: 125px;
         border-bottom: #dddddd 1px solid;
         display: block;
-        padding: 0 5%;
+        padding: 0 @left-right-margin;
         
         nav.userbox {
             .border-radius(0 0 5px 5px);
@@ -84,11 +86,11 @@ body  {
     }
 
     nav[role="navigation"] {
-        margin: 35px 5% 0 5%;
+        margin: 35px @left-right-margin 0 @left-right-margin;
         .background-linear-gradient(#ededed, #ddd);
         border: #dddddd solid 1px;
         border-bottom-color: #fafafa;
-        .border-radius(5px 5px 0 0);
+        .border-radius(5px); /* 5px 5px 0 0 */
         font-size: 110%;
         display: block;
         padding: 5px;
@@ -109,11 +111,21 @@ body  {
                 color: #333;
                 background-color: #ccc;
             }
+	    a.selected {
+		background: none repeat scroll 0 0 #FFFFFF;
+		border-color: #CCCCCC #EEEEEE #EEEEEE #CCCCCC;
+		border-style: solid;
+		border-width: 1px;
+		color: #333333;
+		font-weight: bold;
+		position: relative;
+		top: -1px;
+	    }
         }
 
     }
     > nav.subnav {
-        margin: 0 5%;
+        margin: 0 @left-right-margin;
         border: #dddddd solid 1px;
         border-top-style: none;
         .border-radius(0 0 5px 5px);
@@ -124,17 +136,27 @@ body  {
         background-color: white;
         padding: 5% 1em 0 1em;
         overflow: hidden;
-        margin: 0 5% 0 5%;
-        
+        margin: 0 5%;
+
+        > section.fifty_col {
+	    width: 50%;
+	    float: left;
+	}
         > section {
-            width: 50%;
-            float: left;
-            margin: 0 0 5% 0;
+	    margin-bottom: 25px;
             
             p {
                 margin-bottom: 0.4em;
             }
-            > header {
+	    ul {
+		list-style-type: disc;
+		padding-left: 1em;
+		padding-bottom: 1em;
+	    }
+	    ul li {
+		margin-bottom: 1em;
+	    }
+            header {
                 color: #108db6;
                 font-size: 130%;
                 margin-bottom: 1em;
@@ -144,25 +166,29 @@ body  {
                 margin-bottom: 2em;
                 padding-right: 1em;
                 overflow: hidden;
-                > header h1 {
-                    font-weight: normal;
-                    font-size: 125%;
-                    margin-right: 0.5em;
-                }
             }
             > article.movement {
                 > header {
                     margin-bottom: 0.6em;
                     float: left;
-                    
+                    color: black;
+		    font-size: 125%;
+		    padding-left: 0;
                     > hgroup {
                         > h1.type {
                             font-weight: bold;
                             letter-spacing: 0.05em;
                         }
-                        > h1 {
-                            display: inline;
+                        h1 {
+			    display: inline;
+			    font-weight: normal;
+			    margin-right: 0.5em;
                         }
+			> a {
+			    display: inline;
+			    text-decoration: none;
+			    color: inherit;
+			}
                     }
                 }
                 .votes {
@@ -178,6 +204,18 @@ body  {
                 > header {
                     float: left;
                     padding-bottom: 0.01em;
+		    color: inherit;
+		    font-size: 125%;
+		    margin-bottom: 0;
+		    padding-left: 0;
+		    a {
+			color: inherit;
+			text-decoration: none;
+		    }
+		    h1 {
+			font-weight: normal;
+			margin-right: 0.5em;
+		    }
                 }
                 > .status {
                     float: right;
@@ -212,13 +250,6 @@ body  {
                 }
             }
         }
-    }
-    
-    > footer {
-        margin: 0 5% 0.5em 5%;
-        background-color: #eee;
-        padding: 0.5em;
-        .border-radius(0 0 5px 5px);
     }
 }
 
